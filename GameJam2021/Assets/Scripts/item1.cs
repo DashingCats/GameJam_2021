@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 public class item1 : MonoBehaviour
 {
-    public GameObject red;
-    public GameObject stand;
+    public GameObject obj1;
+    public GameObject loc1;
+    Rigidbody2D m_rig1;
+    Collider2D m_collider1;
+
     public Text mainText;
-
-    Rigidbody2D m_rigi;
-    Collider2D m_collider;
-
     private bool isSealed = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_collider = GetComponent<Collider2D>();
-        m_rigi = GetComponent<Rigidbody2D>();
+        m_collider1 = obj1.GetComponent<Collider2D>();
+        m_rig1 = obj1.GetComponent<Rigidbody2D>();
+
         mainText.text = "";
     }
 
@@ -42,25 +42,25 @@ public class item1 : MonoBehaviour
 
 
     }
-    private void OnTriggerEnter2D(Collider2D colTrig)
+    private void OnTriggerEnter2D(Collider2D colTrig1)
     {
 
-        if (colTrig.gameObject.name == "Stand") 
+        if (colTrig1.gameObject.name == "Stand") 
         {
             Debug.Log("It has been placed");
-            red.transform.position = stand.transform.position;
+            obj1.transform.position = loc1.transform.position;
             
             mainText.text = "It has been sealed";
             StartCoroutine(Countdown());
             isSealed = true;
-            m_rigi.isKinematic = true;
-
+            m_rig1.isKinematic = true;
         }
 
     }
+   
 
     //Begins Countdown for text to disappear
-   private IEnumerator Countdown() 
+    private IEnumerator Countdown() 
     {
         float counter = 5;
         
@@ -78,14 +78,7 @@ public class item1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if((red.transform.position.x <=-1) && (red.transform.position.y >= 2))
-        {
-            red.transform.position = new Vector3(-1, 3, 1);
-            m_collider.enabled = false;
-            
-        }
-        */
+        
 
     }
 }
