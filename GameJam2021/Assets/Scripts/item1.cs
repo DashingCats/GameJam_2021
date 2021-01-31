@@ -45,7 +45,7 @@ public class item1 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D colTrig1)
     {
 
-        if (colTrig1.gameObject.name == "Stand") 
+        if (colTrig1.gameObject.name == "Stand1") 
         {
             Debug.Log("It has been placed");
             obj1.transform.position = loc1.transform.position;
